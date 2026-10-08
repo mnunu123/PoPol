@@ -4,6 +4,7 @@
 
 - `index.html` — 메인 (소개 · 일하는 방식 · 케이스 스터디 목록 · 타임라인 · 수상 · 스킬 · 연락처)
 - `projects/*.html` — 프로젝트별 케이스 스터디 (문제 → 판단 → 행동 → 결과 → 배운 점)
+- `works.html` — 작품 갤러리 (카드뉴스·도면·웹툰·포스터, 라이트박스). 작품 데이터는 `site/data.mjs`의 `works`, 이미지는 `assets/img/works/`
 - `assets/` — CSS · JS · 이미지
 - `site/data.mjs` — **모든 텍스트 콘텐츠**. 여기만 고치면 됨
 - `site/build.mjs` — HTML 생성기

@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { profile, principles, timeline, awards, gradeColor, certs, education, skills, projects } from './data.mjs';
+import { profile, principles, timeline, awards, gradeColor, certs, education, skills, projects, works } from './data.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const esc = (s) => String(s).replace(/&(?![a-z#0-9]+;)/g, '&amp;');
@@ -29,6 +29,7 @@ const nav = (base) => `<nav class="nav"><div class="wrap">
 <button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">메뉴</button>
 <ul id="menu">
 <li><a href="${base}index.html#projects">Projects</a></li>
+<li><a href="${base}works.html">Works</a></li>
 <li><a href="${base}index.html#how">How I Work</a></li>
 <li><a href="${base}index.html#timeline">Timeline</a></li>
 <li><a href="${base}index.html#awards">Awards</a></li>
@@ -113,6 +114,14 @@ ${nav(base)}
 <div class="grid g2" style="margin-top:34px">${featured.map(pcard).join('')}${rest.map(pcard).join('')}</div>
 </div></section>
 
+
+<section class="section" id="works"><div class="wrap">
+<div class="kicker">Works</div>
+<h2 class="h2">만든 것들 — <span class="c-amber">카드뉴스 대상</span>, 설계 도면, 웹툰, 포스터</h2>
+<p class="lead">공모전에 제출한 작품을 그대로 볼 수 있게 모았습니다. 콘셉트·대사·레이아웃·규격은 직접, 이미지 생성은 AI, CAD 도면은 계산값과 대조해 그렸습니다.</p>
+<div class="works-strip">${works.slice(0, 8).map((w) => `<a href="works.html#${w.id}" class="ws"><img src="assets/img/works/${w.imgs[0].replace('../', '../')}" alt="${w.t}" loading="lazy"><div class="ws-t"><span class="pill ${w.award === '대상' ? 'solid amber' : w.color}" style="margin:0 0 6px">${w.award}</span><div>${w.t}</div></div></a>`).join('')}</div>
+<div style="margin-top:22px"><a class="btn" href="works.html">전체 작품 보기 →</a></div>
+</div></section>
 <section class="section" id="timeline"><div class="wrap">
 <div class="grid g2" style="align-items:start">
 <div><div class="kicker">Timeline</div><h2 class="h2">2024 → 2026</h2>
@@ -188,6 +197,37 @@ ${footer(base)}`;
   fs.writeFileSync(path.join(ROOT, 'projects', `${pr.slug}.html`), html);
 }
 
+
+// ---------- works gallery ----------
+function buildWorks() {
+  const base = './';
+  const item = (w) => `<section class="work" id="${w.id}">
+<div class="work-head">
+<div><div class="kicker" style="margin-bottom:8px">${w.c}</div><h2>${w.t}</h2></div>
+<div class="work-meta"><span class="pill ${w.award === '대상' ? 'solid amber' : w.color}">${w.award}</span><span class="dim">${w.date}</span></div>
+</div>
+<p class="work-d">${w.d}</p>
+<div style="margin:12px 0 18px">${w.tools.map((t) => `<span class="pill ${w.color}">${t}</span>`).join('')}</div>
+<div class="work-grid ${w.light ? 'light' : ''}" style="--cols:${w.cols || (w.ratio === '9/16' || w.ratio === '2/3' || w.ratio === '4/5' || w.ratio === '3/4' ? 5 : w.ratio === '1/1' ? 5 : 3)};--ratio:${w.ratio}">
+${w.imgs.map((im, i) => `<a class="wi" href="assets/img/works/${im}" data-lb="${w.id}" data-cap="${w.t} · ${i + 1}/${w.imgs.length}"><img src="assets/img/works/${im}" alt="${w.t} ${i + 1}" loading="lazy"></a>`).join('')}
+</div>
+</section>`;
+  const html = `${head('Works — 박세준 작품 갤러리', '공모전에 제출한 카드뉴스, 설계 도면, 웹툰, 포스터, 캐릭터 작품 모음', base)}
+${nav(base)}
+<header class="cs-head"><div class="wrap">
+<a class="back" href="index.html">← 홈</a>
+<div class="kicker">Works · 작품 갤러리</div>
+<h1>만든 것들을 <span class="c-amber">그대로</span> 볼 수 있게</h1>
+<p class="lead">공모전에 제출한 작품 ${works.length}건. 판타지아 대구 AI 페스타 카드뉴스 부문 대상, 한국도로공사 AI영상 대상을 포함합니다. 콘셉트·대사·레이아웃·규격·금지 사항은 직접 정하고, 이미지 생성은 AI, CAD 도면은 계산값과 대조해 그렸습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
+<div class="subnav">${works.map((w) => `<a href="#${w.id}">${w.award === '대상' ? '🏆 ' : ''}${w.t}</a>`).join('')}</div>
+</div></header>
+<div class="wrap">${works.map(item).join('')}</div>
+<div class="lightbox" id="lb"><button class="lb-close" aria-label="닫기">×</button><button class="lb-prev" aria-label="이전">‹</button><img alt=""><button class="lb-next" aria-label="다음">›</button><div class="lb-cap"></div></div>
+${footer(base)}`;
+  fs.writeFileSync(path.join(ROOT, 'works.html'), html);
+}
+
 buildIndex();
+buildWorks();
 projects.forEach(buildProject);
 console.log('built index.html +', projects.length, 'project pages');

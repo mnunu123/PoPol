@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAIN-X — 2035 자율 빗물받이 준설 로봇 설계 — 박세준</title>
+<meta name="description" content="ZYXCAD AX 경진대회 설계 부문. 쓰리봇 MVP에서 부딪힌 한계를 설계 요구사항으로 바꿔, 덮개 플리퍼·측면 굴착 갠트리·클램셸을 도면 6장(조립도·부품도·상세도·구조도)으로. Python 기구 계산 + LISP로 CAD 안에서 재검증.">
+<meta property="og:title" content="DRAIN-X — 2035 자율 빗물받이 준설 로봇 설계 — 박세준">
+<meta property="og:description" content="ZYXCAD AX 경진대회 설계 부문. 쓰리봇 MVP에서 부딪힌 한계를 설계 요구사항으로 바꿔, 덮개 플리퍼·측면 굴착 갠트리·클램셸을 도면 6장(조립도·부품도·상세도·구조도)으로. Python 기구 계산 + LISP로 CAD 안에서 재검증.">
+<meta property="og:image" content="../assets/img/robot_frame.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0f1e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23ff7a6b' font-family='sans-serif' font-weight='800'>S</text></svg>">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<a class="brand" href="../index.html">박세준 <span>Portfolio 2026</span></a>
+<button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">메뉴</button>
+<ul id="menu">
+<li><a href="../index.html#projects">Projects</a></li>
+<li><a href="../works.html">Works</a></li>
+<li><a href="../index.html#how">How I Work</a></li>
+<li><a href="../index.html#timeline">Timeline</a></li>
+<li><a href="../index.html#awards">Awards</a></li>
+<li><a href="../index.html#skills">Skills</a></li>
+<li><a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">Blog ↗</a></li>
+<li><a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></li>
+</ul></div></nav>
+<header class="cs-head"><div class="wrap">
+<a class="back" href="../index.html#projects">← 모든 프로젝트</a>
+<div class="kicker c-amber">CAD 설계 · 기구 설계</div>
+<h1>차로를 막지 않고, 덮개부터 바닥 토사까지 — <span class="c-amber">보도에 선 채 일하는</span> 빗물받이 준설 로봇을 도면으로 설계했습니다</h1>
+<p class="lead">2026 제2회 ZYXCAD AX 경진대회 설계 부문(미래 로봇·기계 설계, 1인). 전국 423만여 곳의 빗물받이를 비 오기 전마다 사람이 열고 차도 쪽에서 퍼내는 현실에서 출발해, 실외이동로봇 보도 통행 제도(총중량 500kg·15km/h 이하) 위에서 동작하는 2035년의 유지관리 로봇을 설계했습니다. 2025년 쓰리봇 MVP에서 직접 겪은 한계가 그대로 설계 요구사항이 됐습니다.</p>
+<div class="cs-meta">
+<div class="m"><div class="k">Period</div><div class="v">2026.09 ~ 2026.10.05</div></div>
+<div class="m"><div class="k">Role</div><div class="v">기획 · 기구 설계 · 도면 · 계산 · 작품소개서 (1인)</div></div>
+<div class="m"><div class="k">Team</div><div class="v">개인</div></div>
+<div class="m"><div class="k">Stack</div><div class="v" style="font-size:13px">ZYXCAD AX (DWG, 배치 탭 S01~S06) · AutoLISP (궤적 스윕 · 최소 여유 계산) · Python (링크 궤적 · 전도 안정성 · 질량 추정) · 3각법 1:20 / 1:10 / 1:5 / 1:2</div></div>
+</div>
+<div class="cs-kpis"><div class="kpi"><div class="v c-amber">6장</div><div class="l">도면 (조립도 · 부품도 · 상세도 · 구조도)</div></div><div class="kpi"><div class="v c-coral">650mm</div><div class="l">보도에서 차도 쪽 측면 리치</div></div><div class="kpi"><div class="v c-violet">162°</div><div class="l">덮개 플리퍼 스윙 (150mm 수직 상승 후)</div></div><div class="kpi"><div class="v c-blue">1,950mm</div><div class="l">Z 집체인 스트로크 · 바닥 토사까지</div></div></div>
+<div class="subnav"><a href="#why">왜 2035년인가</a><a href="#flipper">덮개 플리퍼</a><a href="#dig">측면 굴착 · 클램셸</a><a href="#drawings">도면 패키지</a><a href="#process">AX 설계 과정</a></div>
+</div></header>
+<section class="cs-section" id="why"><div class="wrap">
+<div class="label c-coral"><i></i>Problem</div>
+<h2>2025년 쓰리봇 MVP에서 겪은 문제가 DRAIN-X의 설계 요구사항이 됐습니다</h2>
+<div class="prose"><p>노바로보틱스에서 빗물받이 개폐 모듈과 흡입 모듈 MVP를 만들며 네 가지 벽에 부딪혔습니다. 사람이 밀어 정렬해야 해서 작업자가 도로 위에 서야 했고, 그리퍼를 덮개 구멍에 ±5mm로 넣어야 해서 VLA 모델까지 필요했고, 릴레이 노이즈로 윈치가 오동작하며 하강을 시간으로만 판단했고, 물까지 빨아들이면 무거워져 건식만 흡입할 수 있었습니다.</p><p>그래서 DRAIN-X는 보도를 자율 주행하다 차도 쪽 빗물받이 옆에 멈춰 측면 650mm를 뻗어 작업합니다(연석 200 + 빗물받이 250 + 여유 200). 그리퍼 대신 EPM(영구 전자석) 패드로 덮개 면에만 닿으면 되게 했고, 시간 판단 대신 엔코더 액추에이터 + 로드셀 접지 감지로, 흡입 대신 배수 구멍이 있는 클램셸로 바닥 토사까지 퍼 올립니다. 전장 × 전폭 × 전고 1,800 × 850 × 1,450mm, 공차 질량 약 387kg(추정), 총중량 450kg 이하로 인증 범위 안에 맞췄습니다.</p></div>
+<div class="ba"><div class="b"><div class="tag c-coral">BEFORE</div><ul class="list"><li>사람이 밀어 정렬, 작업자가 도로 위에 섬</li><li>그리퍼를 ±5mm로 삽입 → VLA 모델 필요</li><li>릴레이 노이즈로 윈치 오동작, 하강을 시간으로 판단</li><li>물까지 빨면 무거워져 건식만 흡입</li></ul></div><div class="a"><div class="tag c-mint">AFTER</div><ul class="list"><li>보도 자율 주행 + 측면 650mm 리치</li><li>EPM 패드: 덮개 면에만 닿으면 됨</li><li>엔코더 액추에이터 + 로드셀 접지 감지</li><li>클램셸 배수 구멍 + 물빠짐 대기</li></ul></div></div><div class="gallery"><figure class=""><img src="../assets/img/works/drainx_photo_mvp.jpg" alt="2025 쓰리봇 MVP · 프로파일 프레임 + 윈치 하강" loading="lazy"><figcaption>2025 쓰리봇 MVP · 프로파일 프레임 + 윈치 하강</figcaption></figure><figure class=""><img src="../assets/img/works/drainx_photo_relay.jpg" alt="윈치 릴레이 · 노이즈 오동작의 출발점" loading="lazy"><figcaption>윈치 릴레이 · 노이즈 오동작의 출발점</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_c_s01_views.jpg" alt="S01 일반 배치도 · 3면도 1:20" loading="lazy"><figcaption>S01 일반 배치도 · 3면도 1:20</figcaption></figure></div>
+</div></section><section class="cs-section" id="flipper"><div class="wrap">
+<div class="label c-violet"><i></i>Mechanism 1</div>
+<h2>덮개를 집고, 들고, 넘겨서, 로봇 위에 내려놓는다 — 평행 4절 링크를 쓰지 않은 이유</h2>
+<div class="prose"><p>덮개 플리퍼는 패드가 덮개 위에서 EPM ON(−45.6°) → 스테이지로 150mm 수직 상승 → 162° 스윙해 몸체 모서리를 최소 여유 146mm로 통과(59.9°) → 트레이 위 130mm에서 멈춘 뒤 150mm 하강(116.4°) 순서로 움직입니다. 왜 150mm 수직부터인가 — 덮개는 프레임에 30mm 묻혀 있어서 원호로 바로 돌리면 픽업 순간 45° 방향으로 움직여 턱에 걸립니다.</p><p>평행 4절 링크를 쓰지 않은 이유는 스윙 162°가 크랭크 90°, 즉 고정링크와 일직선이 되는 사점을 지나기 때문입니다. 사점에서 평행사변형이 뒤집힐 수 있어 피벗의 고정 스프로킷과 암 끝 스프로킷을 1:1 체인으로 묶어 패드를 수평으로 유지했습니다. 정전에도 덮개가 떨어지지 않도록 EPM은 전원 없이 유지되고 피벗은 웜 감속(자체 잠금)입니다. 요구값은 EPM 유지력 1,545N 이상, 피벗 토크 약 457N·m(수평 자세, 정적). 끝점 궤적 2,000스텝에서 덮개 외곽과 몸체 사이 최소 거리를 Python으로 계산하고, 같은 계산을 ZYXCAD AX 안에서 LISP(<code>DXFLIP</code> 명령)로 재현해 도면 위에 스윕과 최소 여유를 그렸습니다.</p></div>
+<div class="gallery"><figure class="light"><img src="../assets/img/works/drainx_c_s03_main.jpg" alt="S03 덮개 플리퍼 구조도 · A·B·C 포지션" loading="lazy"><figcaption>S03 덮개 플리퍼 구조도 · A·B·C 포지션</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_zyx_dxflip.jpg" alt="ZYXCAD AX에서 LISP DXFLIP 실행 · 궤적 스윕과 최소 여유 표시" loading="lazy"><figcaption>ZYXCAD AX에서 LISP DXFLIP 실행 · 궤적 스윕과 최소 여유 표시</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_c_s02_view.jpg" alt="S02 조립도 · Zone A 플리퍼 / B 굴착·호퍼 / C 전원·제어" loading="lazy"><figcaption>S02 조립도 · Zone A 플리퍼 / B 굴착·호퍼 / C 전원·제어</figcaption></figure></div>
+</div></section><section class="cs-section" id="dig"><div class="wrap">
+<div class="label c-blue"><i></i>Mechanism 2</div>
+<h2>보도에 선 채 650mm 뻗고, 1,950mm 내려간다</h2>
+<div class="prose"><p>Y 2단 텔레스코픽 붐은 덤프 위치 y 100에서 최대 리치 y 1,075까지(스트로크 975), Z 집체인 액추에이터는 후퇴 +1,050에서 바닥 접촉 −850까지 사용 1,900 + 시공 여유 50 = 1,950mm입니다. 체인이 접혀 수납돼 로봇 높이 1,450을 유지합니다. T-G 클램셸은 닫힘 250 × 300, 개방 10°에서 외곽 372(≤ 380)로 최소 빗물받이 300 × 400 안에서 개폐되고, 턱마다 2kN급 실린더(모멘트 암 115/340 → 턱당 약 680N)입니다. 커플러는 도브테일 자동 정렬 + 솔레노이드 잠금 + 포고 접점 4개, 인라인 로드셀로 접지와 질량을 측정합니다.</p><p>전도 안정성은 차도 쪽으로 계산했습니다. 아웃리거 없이 가동부 83kg이 1,075에 있을 때 안전율 2.25, 버킷 걸림으로 Z 인장 1,200N이면 0.91로 전도. 아웃리거를 두면 각각 4.62 / 1.87이고 Z 인장을 600N으로 제한하면 2.66입니다. 결론은 굴착 중 아웃리거 인터록 + Z 인장 600N 소프트 리밋. 배터리(48V 스왑형)를 작업 반대편 보도 쪽에 둬 카운터웨이트를 겸합니다.</p></div>
+<div class="steps"><div class="step"><div class="n">01</div><div><div class="t">이동</div><div class="d">보도 자율 주행, 붐·아웃리거·플리퍼 수납, 폭 850 유지</div></div></div><div class="step"><div class="n">02</div><div><div class="t">인식·정렬</div><div class="d">빗물받이 좌표 + 전방 카메라 덮개 검출, 연석과 200 간격</div></div></div><div class="step"><div class="n">03</div><div><div class="t">덮개 들기</div><div class="d">EPM ON → 150 수직 → 162° 스윙 → 트레이 안착</div></div></div><div class="step"><div class="n">04</div><div><div class="t">전진·고정</div><div class="d">+700 스텝 전진, 아웃리거 연석 위 전개 후 굴착 허용 (인터록)</div></div></div><div class="step"><div class="n">05</div><div><div class="t">굴착·검증</div><div class="d">깊이 스캔 부피 → 클램셸 반복 → 재스캔 부피차 + 로드셀 질량</div></div></div><div class="step"><div class="n">06</div><div><div class="t">복구·기록</div><div class="d">수납 → 후진 → 덮개 원위치 → 결과 업로드 → 다음 지점</div></div></div></div><div class="gallery"><figure class="light"><img src="../assets/img/works/drainx_c_s04_section.jpg" alt="S04 작업 단면 · 보도-연석-빗물받이 위 작업 모드 1:20" loading="lazy"><figcaption>S04 작업 단면 · 보도-연석-빗물받이 위 작업 모드 1:20</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_c_s05_jaw.jpg" alt="S05 클램셸 X-Z · 닫힘 실선, 개방 10° 가상선" loading="lazy"><figcaption>S05 클램셸 X-Z · 닫힘 실선, 개방 10° 가상선</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_c_s05_v1.jpg" alt="S05 Y-Z · 커플러 · 로드셀 · 깊이카메라" loading="lazy"><figcaption>S05 Y-Z · 커플러 · 로드셀 · 깊이카메라</figcaption></figure></div>
+</div></section><section class="cs-section" id="drawings"><div class="wrap">
+<div class="label c-amber"><i></i>Drawings</div>
+<h2>MASTER 1개 파일, 배치 탭 S01~S06 — 모든 치수는 계산값과 대조</h2>
+<div class="prose"><p>공식 제출 기준(부품도·조립도·상세도·구조도)을 한 DWG 파일의 배치 탭 6장으로 구성했습니다. S01 일반 배치도(3면도 1:20, 제원표), S02 조립도 + 부품표(1:10, 서브시스템 01~12, 질량 추정), S03 덮개 플리퍼(A·B·C 포지션, 끝단 1:5), S04 작업 단면(Y-Z 1:20), S05 클램셸·커플러(1:5, 커플러 단면 1:2), S06 부품도(플리퍼 암, 턱 측판, 아웃리거 암 — 공차·재질). 현장 실측이나 원문 확인이 필요한 값은 도면에 * Concept Design Assumption으로 따로 표시했습니다.</p></div>
+<div class="gallery"><figure class="light"><img src="../assets/img/works/drainx_S01.jpg" alt="S01 일반 배치도 · 구조도" loading="lazy"><figcaption>S01 일반 배치도 · 구조도</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_S02.jpg" alt="S02 조립도 + 부품표" loading="lazy"><figcaption>S02 조립도 + 부품표</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_S03.jpg" alt="S03 덮개 플리퍼 구조도·상세도" loading="lazy"><figcaption>S03 덮개 플리퍼 구조도·상세도</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_S04.jpg" alt="S04 작업 단면 구조도" loading="lazy"><figcaption>S04 작업 단면 구조도</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_S05.jpg" alt="S05 클램셸 · 커플러 상세도" loading="lazy"><figcaption>S05 클램셸 · 커플러 상세도</figcaption></figure><figure class="light"><img src="../assets/img/works/drainx_S06.jpg" alt="S06 부품도" loading="lazy"><figcaption>S06 부품도</figcaption></figure></div>
+</div></section><section class="cs-section" id="process"><div class="wrap">
+<div class="label c-mint"><i></i>AX Process</div>
+<h2>AI가 탐색하고, 사람이 결정하고, ZYXCAD AX가 그린다</h2>
+<div class="prose"><p>공모 요강과 쓰리봇 기록 5종을 분석(DISCOVER)하고 아이디어 10개를 생성(DIVERGE)한 뒤 100점 평가로 DRAIN-X를 제가 선정(DECIDE)했습니다. 기구·치수·안정성은 Python으로 계산(ENGINEER)하고, 도면 좌표를 코드로 생성해 ZYXCAD AX에서 검수·출력(DESIGN)했으며, LISP로 CAD 안에서 재검증(REVIEW)했습니다. AI 리뷰가 찾아서 바뀐 설계도 있습니다 — 스윙 사점 문제가 그중 하나였고, 그 결과가 1:1 체인 수평 유지 구조입니다.</p></div>
+<div class="callout honest"><b>정직하게</b> — 2D 도면과 계산 기반의 콘셉트 설계이며 시제품은 만들지 않았습니다. 집체인 액추에이터(Tsubaki ZCA45N급) 등 부품 선정은 검증이 필요하고, 빗물받이 규격·휠하우스 등 실측값은 가정으로 표시했습니다. 공모전 결과는 대기 중입니다.</div>
+</div></section>
+
+<div class="wrap"><div class="nextprev">
+<a href="pv5.html"><div class="k">← PREV</div><div class="t">PV5 카고 택배 패키지 — 뒷문을 열면 꺼낼 칸에 불이 켜진다</div></a>
+<a href="docs.html" style="text-align:right"><div class="k">NEXT →</div><div class="t">숫자가 틀리면 안 되는 문서 — 리츠 금융 모델, 특허 초안, 사업계획서</div></a>
+</div></div>
+<footer><div class="wrap">
+<div>© 2026 박세준 · 사실과 수치는 개발일지·보고서·GitHub 기준으로 적었습니다.</div>
+<div><a href="https://porfolio2-d2s5.vercel.app" target="_blank" rel="noopener">이전 포트폴리오 ↗</a> &nbsp;·&nbsp; <a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">블로그 ↗</a> &nbsp;·&nbsp; <a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>
