@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAMP 사출성형 검사 우선순위 모델 — 박세준</title>
+<meta name="description" content=""불량을 맞히지 말고 검사 순서를 정하자." 세 근거를 결합한 순위 모델로 검사량 −32%, 날짜순 walk-forward 4겹 검증으로 정확도 99%의 착시를 반박.">
+<meta property="og:title" content="KAMP 사출성형 검사 우선순위 모델 — 박세준">
+<meta property="og:description" content=""불량을 맞히지 말고 검사 순서를 정하자." 세 근거를 결합한 순위 모델로 검사량 −32%, 날짜순 walk-forward 4겹 검증으로 정확도 99%의 착시를 반박.">
+<meta property="og:image" content="../assets/img/robot_frame.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0f1e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23ff7a6b' font-family='sans-serif' font-weight='800'>S</text></svg>">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<a class="brand" href="../index.html">박세준 <span>Portfolio 2026</span></a>
+<button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">메뉴</button>
+<ul id="menu">
+<li><a href="../index.html#projects">Projects</a></li>
+<li><a href="../index.html#how">How I Work</a></li>
+<li><a href="../index.html#timeline">Timeline</a></li>
+<li><a href="../index.html#awards">Awards</a></li>
+<li><a href="../index.html#skills">Skills</a></li>
+<li><a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">Blog ↗</a></li>
+<li><a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></li>
+</ul></div></nav>
+<header class="cs-head"><div class="wrap">
+<a class="back" href="../index.html#projects">← 모든 프로젝트</a>
+<div class="kicker c-blue">데이터 분석 · 제조</div>
+<h1>"불량을 맞히지 말고, <span class="c-blue">검사 순서를 정하자</span>" — 사출성형 검사 우선순위 모델</h1>
+<p class="lead">2026 제6회 K-인공지능 제조데이터 분석 경진대회(팀). KAMP 사출성형기 AI 데이터셋(S14 650톤, CN7·RG3 사이드몰딩)으로 품질불량 사전예측과 검사 우선순위 결정 문제에 도전했습니다.</p>
+<div class="cs-meta">
+<div class="m"><div class="k">Period</div><div class="v">2026.09 ~ 2026.10</div></div>
+<div class="m"><div class="k">Role</div><div class="v">모델 설계 · 검증 설계 · 보고서 (팀)</div></div>
+<div class="m"><div class="k">Team</div><div class="v">KAMP 경진대회 팀</div></div>
+<div class="m"><div class="k">Stack</div><div class="v" style="font-size:13px">pandas · numpy · scikit-learn · IsolationForest · Logistic Regression · LightGBM (비교) · walk-forward 검증 · matplotlib</div></div>
+</div>
+<div class="cs-kpis"><div class="kpi"><div class="v c-coral">−32%</div><div class="l">검사 작업량 (1,000 → 682개)</div></div><div class="kpi"><div class="v c-violet">25 / 25</div><div class="l">10월 날짜순 검증, 검사량 60.3%로 전부 포착</div></div><div class="kpi"><div class="v c-blue">1.5~1.9배</div><div class="l">무작위 검사 대비 포착률</div></div><div class="kpi"><div class="v c-mint">0.96%</div><div class="l">불량률 (5,230부품 중 50)</div></div></div>
+
+</div></header>
+<section class="cs-section" id="problem"><div class="wrap">
+<div class="label c-coral"><i></i>Problem</div>
+<h2>불량이 1% 미만이면 검사 시간의 99%가 양품 확인에 쓰입니다</h2>
+<div class="prose"><p>성형 후 사람이 육안으로 전수검사합니다. 불량률 0.96%라 검사 시간 대부분이 양품 확인에 쓰이고, 연속불량은 인지가 늦으며, 금형 자리(LH/RH) 쏠림(불량 39샷 중 38샷이 RH)은 활용되지 않았습니다. 지도학습 분류기는 무작위 수준이었습니다. 그래서 목표를 "불량 판별"이 아니라 "부품별 불량확률 순위로 검사 자원(정밀/표준/샘플링)을 배분"하는 것으로 다시 정의하고, 평가 지표도 정확도 대신 같은 검사량의 무작위 검사 대비 "검사량 대비 불량 포착률"로 잡았습니다.</p><p>대회 배포 데이터는 표준화돼 있고 시간·LH/RH 정보가 없었는데, KAMP 원본에서 CN7 10/27(214행)을 제외하고 제품별로 표준화하면 오차 0으로 일치한다는 걸 확인해 시간·자리·불량 유형을 복원했습니다. 외부 데이터 조항에 따라 출처를 명기했습니다.</p></div>
+
+</div></section><section class="cs-section" id="model"><div class="wrap">
+<div class="label c-blue"><i></i>Approach</div>
+<h2>근거 셋을 로지스틱 회귀로 합치고, 최근 200개 순위로 등급을 정합니다</h2>
+<div class="prose"><p>근거 1 공정 이상 점수는 IsolationForest(나무 300개)를 양품과 라벨 없는 인접일 데이터로 "평소 상태"만 학습시켜 얻습니다. LR 기본/확장, LightGBM, 오토인코더와 비교해 세션 교차검증 PR-AUC 0.101로 가장 높았습니다. 근거 2 캐비티 위험도는 제품×자리별 과거 불량률의 베이지안 평균(α=50)이고, 근거 3 연속불량 상태는 직전 5샷 불량 수와 감쇠 점수(τ=2)입니다. 피처는 제품별 표준화 센서값 23 + 변화량 23 + 흐름 23 + 세션 위치 1 = 70개이며, 날짜는 누수 방지를 위해 입력에서 제외했습니다.</p><p>조합별로 불량 95%를 잡는 데 필요한 검사량을 비교하면 캐비티만 100%, 이상점수만 83.8%, 캐비티+연속불량 69.2%, 세 근거 결합 62.6%로 결합해야 내려갑니다. 확률 기준값 대신 같은 제품 최근 200개 대비 순위로 정밀 10% / 표준 50% / 샘플링 40% 등급을 매기고, 검사 결과는 다음 샷의 근거 3으로 되먹입니다.</p></div>
+<div class="gallery"><figure class="light"><img src="../assets/img/kamp_arch.png" alt="근거 3개 → 로지스틱 회귀 → 순위 등급, 검사 결과 되먹임" loading="lazy"><figcaption>근거 3개 → 로지스틱 회귀 → 순위 등급, 검사 결과 되먹임</figcaption></figure><figure class="light"><img src="../assets/img/kamp_curve.png" alt="조합별 검사량-포착률 곡선 · 세 근거 결합 시 63% 검사로 95% 포착" loading="lazy"><figcaption>조합별 검사량-포착률 곡선 · 세 근거 결합 시 63% 검사로 95% 포착</figcaption></figure></div>
+</div></section><section class="cs-section" id="validation"><div class="wrap">
+<div class="label c-violet"><i></i>Validation</div>
+<h2>검증을 4겹으로, 뒤로 갈수록 엄격하게</h2>
+<div class="prose"><p>세션 교차검증(2,393부품/불량 42) → 대회 테스트일 RG3 10/23(500/10) → 날짜순 walk-forward 10월(2,927/25, 생산일마다 그 이전 데이터로만 표준화·IF·캐비티 표·회귀·기준값 전부 재학습, 개선 후보 23개 비교) → 11월 봉인 테스트(1,000/8, 최종안 확정 후 한 번만 평가). 무작위 80:20 분할에서 LightGBM ROC-AUC 0.93이 날짜 분할에서 0.61로 떨어지는 것을 보이고 날짜순 결과만 보고했습니다. "전부 양품" 판정은 정확도 99.1%지만 불량 0개, 최종안은 정확도 40.6%지만 불량 25/25라는 착시도 함께 적었습니다.</p></div>
+<div class="steps"><div class="step"><div class="n">01</div><div><div class="t">① 세션 교차검증</div><div class="d">불량 42 · 검사 62.6% · 포착 40 (95%)</div></div></div><div class="step"><div class="n">02</div><div><div class="t">② 테스트일</div><div class="d">불량 10 · 검사 52.8% · 포착 10</div></div></div><div class="step"><div class="n">03</div><div><div class="t">③ 날짜순 10월</div><div class="d">불량 25 · 검사 60.3% · 포착 25</div></div></div><div class="step"><div class="n">04</div><div><div class="t">④ 11월 봉인</div><div class="d">불량 8 · 검사 60.4% · 포착 5 (63%)</div></div></div></div><div class="callout honest"><b>11월에서 놓친 3건</b> — 학습에 없던 RG3 LH 불량(7개 중 5개 LH, 캐비티 표에서 가장 안전한 자리)이 나왔고 세션 공정 이상 점수 평균이 2.2(10월 1.0~1.1)로 달랐습니다. 근거 3이 LH 불량 3개를 연이어 포착했고, 사후 제안으로 세션 이상 경보(11/04 부품 73% 경보, 불량 7개 중 6개 포함)를 적었습니다. SEED 42, CPU 3~4분, 3개 환경에서 결과 파일이 동일합니다.</div>
+</div></section>
+
+<div class="wrap"><div class="nextprev">
+<a href="agents.html"><div class="k">← PREV</div><div class="t">AI 자동화 파이프라인 — 에이전트 7개</div></a>
+<a href="radar.html" style="text-align:right"><div class="k">NEXT →</div><div class="t">할증레이더 — 선사 할증 공지를 읽는 LLM + 규칙 검사</div></a>
+</div></div>
+<footer><div class="wrap">
+<div>© 2026 박세준 · 사실과 수치는 개발일지·보고서·GitHub 기준으로 적었습니다.</div>
+<div><a href="https://porfolio2-d2s5.vercel.app" target="_blank" rel="noopener">이전 포트폴리오 ↗</a> &nbsp;·&nbsp; <a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">블로그 ↗</a> &nbsp;·&nbsp; <a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spendable · 오목 AI · 산불 CCTV — 같은 원칙, 다른 도메인 — 박세준</title>
+<meta name="description" content="바뀔 부분은 어댑터로 분리, 분기가 늘어날 로직은 상태 기반. 핀테크 프로토타입, Unity 3D 오목, 5 마이크로서비스 산불 감지에서 같은 설계 원칙을 반복.">
+<meta property="og:title" content="Spendable · 오목 AI · 산불 CCTV — 같은 원칙, 다른 도메인 — 박세준">
+<meta property="og:description" content="바뀔 부분은 어댑터로 분리, 분기가 늘어날 로직은 상태 기반. 핀테크 프로토타입, Unity 3D 오목, 5 마이크로서비스 산불 감지에서 같은 설계 원칙을 반복.">
+<meta property="og:image" content="../assets/img/robot_frame.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0f1e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23ff7a6b' font-family='sans-serif' font-weight='800'>S</text></svg>">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<a class="brand" href="../index.html">박세준 <span>Portfolio 2026</span></a>
+<button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('open')">메뉴</button>
+<ul id="menu">
+<li><a href="../index.html#projects">Projects</a></li>
+<li><a href="../index.html#how">How I Work</a></li>
+<li><a href="../index.html#timeline">Timeline</a></li>
+<li><a href="../index.html#awards">Awards</a></li>
+<li><a href="../index.html#skills">Skills</a></li>
+<li><a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">Blog ↗</a></li>
+<li><a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></li>
+</ul></div></nav>
+<header class="cs-head"><div class="wrap">
+<a class="back" href="../index.html#projects">← 모든 프로젝트</a>
+<div class="kicker c-blue">소프트웨어 설계</div>
+<h1>바뀔 부분은 <span class="c-blue">어댑터로 분리</span>, 분기가 늘어날 로직은 <span class="c-violet">상태 기반</span> — 세 프로젝트에서 같은 원칙</h1>
+<p class="lead">"프로토타입이니까 대충"이 아니라, 반드시 바뀔 부분을 먼저 인정하고 그 경계를 코드 구조에 반영합니다. 설계와 구현 상태는 README에 "구현 완료 / 다음 단계"로 구분합니다.</p>
+<div class="cs-meta">
+<div class="m"><div class="k">Period</div><div class="v">2025 ~ 2026</div></div>
+<div class="m"><div class="k">Role</div><div class="v">설계 · 구현 (1인)</div></div>
+<div class="m"><div class="k">Team</div><div class="v">개인</div></div>
+<div class="m"><div class="k">Stack</div><div class="v" style="font-size:13px">Next.js 16 · TypeScript · Zustand · Vitest · Unity 6 · C# · Task.Run · Python · YOLOv8 · Farneback · FastAPI · React + TypeScript · Docker Compose</div></div>
+</div>
+<div class="cs-kpis"><div class="kpi"><div class="v c-blue">13</div><div class="l">Vitest 유닛 테스트 (Spendable core)</div></div><div class="kpi"><div class="v c-violet">0줄</div><div class="l">2D→3D 전환 시 로직 수정 (오목)</div></div><div class="kpi"><div class="v c-coral">5</div><div class="l">마이크로서비스 (산불 CCTV)</div></div><div class="kpi"><div class="v c-mint">3건</div><div class="l">DEVLOG에 재현·검증한 버그</div></div></div>
+
+</div></header>
+<section class="cs-section" id="spendable"><div class="wrap">
+<div class="label c-blue"><i></i>Project 1</div>
+<h2>Spendable — KB AI 공모전 "미래준비" 탭 프로토타입</h2>
+<div class="prose"><p>"지금 이거 사도 될까?"에 미래의 생활비로 답해 주는 KB스타뱅킹 프로토타입입니다. 은퇴 계산은 입력값(현재 나이, 월 소득, 저축률, 희망 은퇴 나이)이 하나라도 없으면 계산 자체가 의미 없는데, 그렇다고 막으면 사용자가 이탈합니다. 계산 함수가 부족한 값을 임의로 추정해 채우지 않고 <code>missing_data / invalid_age / ready</code> 상태를 명시적으로 반환하고 화면은 상태만 보고 분기하도록 설계했습니다. 금융 계산에서 사용자가 안 넣은 값을 임의로 채워 그럴듯한 숫자를 보여주는 건 나중에 신뢰를 깨뜨리는 선택이라고 봤기 때문입니다.</p><p>구매 판단(judgeStatus)은 "위험해요"로 끝내지 않고 대안 3개(다음 달 구매/할부/예산 낮추기)를 항상 함께 계산합니다. 마이데이터·LLM 교체 지점은 <code>financeDataAdapter</code>, <code>mockChatAdapter</code> 두 어댑터로 격리했고, 폴더 규칙(core=순수 계산·React import 금지, state=Zustand, components=UI)을 CLAUDE.md에 박아 두었습니다. zustand persist의 얕은 병합 때문에 lifePlan 하위 필드가 undefined가 되어 화면이 죽는 버그는 커스텀 깊은 merge로 고쳤습니다. core 순수 함수는 Vitest 유닛 테스트 13개로 회귀를 잡습니다.</p></div>
+
+</div></section><section class="cs-section" id="badok"><div class="wrap">
+<div class="label c-violet"><i></i>Project 2</div>
+<h2>badok — Unity 3D 오목 AI (넥토리얼 지원용)</h2>
+<div class="prose"><p>15×15 보드에서 완전탐색 미니맥스는 실시간이 불가능해, 이미 둔 돌 주변 N칸만 후보로 삼는 가지치기와 알파베타 프루닝으로 계산량을 줄였습니다. 평가 함수는 열린4=100000, 막힌4=10000, 열린3=5000 같은 정석 패턴 점수입니다. AI 계산은 <code>Task.Run</code>으로 백그라운드 스레드에서 돌리고 Unity SynchronizationContext로 결과만 메인 스레드로 복귀시켜 화면이 멈추지 않게 했습니다.</p><p>Core(순수 C#, UnityEngine 미의존)와 Game(MonoBehaviour)을 분리해 둔 덕분에, 프로젝트 도중 2D UI 방식에서 3D 씬 방식으로 렌더링을 전면 교체할 때 Board.cs와 GomokuAI.cs는 한 줄도 수정하지 않았습니다. 보드 큐브를 localScale (16, 0.1, 16)으로 키운 뒤 돌을 그 자식으로 만들어 거대하고 납작한 원반이 그려지던 부모 스케일 상속 버그 등 3건을 재현·검증해 DEVLOG에 남겼습니다.</p></div>
+
+</div></section><section class="cs-section" id="fire"><div class="wrap">
+<div class="label c-coral"><i></i>Project 3</div>
+<h2>산불 CCTV 협업 감지 — 비전문 도메인을 MSA로 분해</h2>
+<div class="prose"><p>다중 CCTV 영상에서 연기·화재를 실시간 감지하고 발화 지점을 삼각측량하는 시스템입니다. ingest → detection → smoke-flow → fusion → alert 5개 마이크로서비스로 역할을 나누고 모두 Docker로 운영했습니다. YOLOv8 연기·화재 검출 + Farneback 광류 분석 + 다중 카메라 삼각측량으로 발화점을 추정하고, React + TypeScript 지도 대시보드에 표시합니다. 비전문 도메인을 구조로 분해해 MVP까지 완성한 사례입니다.</p></div>
+
+</div></section>
+<section class="cs-section"><div class="wrap"><div class="label c-blue"><i></i>Links</div><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="https://github.com/mnunu123/KB_AI_project" target="_blank" rel="noopener">GitHub · KB_AI_project ↗</a><a class="btn" href="https://github.com/mnunu123/badok" target="_blank" rel="noopener">GitHub · badok ↗</a><a class="btn" href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">블로그 · Spendable 회고 ↗</a></div></div></section>
+<div class="wrap"><div class="nextprev">
+<a href="radar.html"><div class="k">← PREV</div><div class="t">할증레이더 — 선사 할증 공지를 읽는 LLM + 규칙 검사</div></a>
+<a href="pv5.html" style="text-align:right"><div class="k">NEXT →</div><div class="t">PV5 카고 택배 패키지 — 뒷문을 열면 꺼낼 칸에 불이 켜진다</div></a>
+</div></div>
+<footer><div class="wrap">
+<div>© 2026 박세준 · 사실과 수치는 개발일지·보고서·GitHub 기준으로 적었습니다.</div>
+<div><a href="https://porfolio2-d2s5.vercel.app" target="_blank" rel="noopener">이전 포트폴리오 ↗</a> &nbsp;·&nbsp; <a href="https://blog-1vld.vercel.app" target="_blank" rel="noopener">블로그 ↗</a> &nbsp;·&nbsp; <a href="https://github.com/mnunu123" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div></footer>
+<script src="../assets/js/main.js"></script>
+</body></html>
