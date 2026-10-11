@@ -133,7 +133,7 @@ ${nav(base)}
 
 <section class="section" id="awards"><div class="wrap">
 <div class="kicker">Recognition</div>
-<h2 class="h2"><span class="c-coral">12건</span> 수상 · 대상 1 · 최우수 4 · 우수 4 · 은상 1 · 장려 2</h2>
+<h2 class="h2"><span class="c-coral">${awards.length}건</span> 수상 · ${['대상', '최우수', '우수', '은상', '장려'].map((g) => [g, awards.filter((a) => a[1] === g).length]).filter(([, n]) => n).map(([g, n]) => `${g} ${n}`).join(' · ')}</h2>
 <p class="lead">2025년 9월부터 12월까지 쓰리봇 한 프로젝트로 9개 대회에서 수상했습니다. 기술형·창업형·사회문제형 대회의 심사 기준에 맞춰 같은 기술을 다르게 설명했고 발표는 직접 했습니다.</p>
 <div class="grid g2" style="margin-top:30px;gap:10px">${awards.map(([d, g, t]) => `<div class="award"><span class="pill solid ${gradeColor[g]}" style="margin:0;text-align:center">${g}</span><span class="d">${d}</span><span>${t}</span></div>`).join('')}</div>
 <p class="muted" style="margin-top:16px;font-size:14px">+ 딥테크 예비창업패키지 우수기업 선정 → 청년창업사관학교 서류 면제 · 창의회로설계 Cadence Award</p>
