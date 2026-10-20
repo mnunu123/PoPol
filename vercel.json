@@ -1,1 +1,7 @@
-{ "cleanUrls": true, "trailingSlash": false }
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/v3/:path*", "destination": "/v3/index.html" }
+  ]
+}
