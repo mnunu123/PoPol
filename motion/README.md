@@ -1,9 +1,9 @@
 # 박세준 포트폴리오 v3 — Build & Verify (Vite + React + Remotion Player)
 
-`/v3/` 경로로 배포되는 모션 그래픽 포트폴리오 사이트. 기존 정적 사이트(루트)와 **같은 콘텐츠 소스(`site/data.mjs`)** 를 쓴다.
+저장소 루트로 배포되는 모션 그래픽 포트폴리오 사이트. 콘텐츠 소스는 `site/data.mjs`.
 
-- 라이브: https://my-project-one-sigma-74.vercel.app/v3
-- 소스: `motion/` · 빌드 결과: `v3/` (저장소에 커밋 — Vercel 설정 변경 없이 서비스)
+- 라이브: https://my-project-one-sigma-74.vercel.app
+- 소스: `motion/` · 빌드 결과: `motion/dist` → `scripts/deploy.mjs` 가 루트 `index.html` + `assets/*.js|css` 로 복사 (저장소에 커밋 — Vercel 설정 변경 없이 서비스)
 
 ## 구조
 
@@ -35,15 +35,15 @@ motion/
 ```bash
 cd motion
 npm install
-npm run dev        # http://localhost:5173/v3/  (이미지는 /assets/img 를 쓰므로 루트도 같이 서빙해야 보임)
-npm run build      # ../v3 에 출력 → git add v3 && commit → Vercel 자동 배포
+npm run dev        # http://localhost:5173/  (이미지는 /assets/img 를 쓰므로 루트도 같이 서빙해야 보임)
+npm run build      # dist 빌드 + 루트로 복사 → git add -A && commit → Vercel 자동 배포
 ```
 
-로컬에서 이미지까지 보려면 저장소 루트에서 정적 서버를 띄우고 `/v3/` 로 접속 (SPA fallback 필요).
+로컬에서 이미지까지 보려면 저장소 루트에서 SPA fallback 되는 정적 서버를 띄우고 `/` 로 접속.
 
 ## 콘텐츠 수정
 
-- 프로젝트 본문 · 수상 · 스킬 · 작품: `site/data.mjs` (기존 사이트와 공유) → `node site/build.mjs` + `npm run build` 둘 다 실행
+- 프로젝트 본문 · 수상 · 스킬 · 작품: `site/data.mjs` → `npm run build`
 - 모션 씬 문구 · 챕터 · 수치: `motion/src/data/scenes.ts`
 - VERIFY 표: `motion/src/data/facts.ts`
 - 콘솔 명령 추가: `motion/src/components/Console.tsx` 의 `run()` switch

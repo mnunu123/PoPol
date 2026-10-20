@@ -1,18 +1,17 @@
 # 박세준 포트폴리오 (PoPol)
 
-정적 사이트. 빌드 도구 없이 Vercel에 바로 배포됩니다.
+Vite + React + Remotion Player 로 만든 모션 그래픽 포트폴리오. 빌드 결과(`index.html`, `assets/*.js|css`)를 저장소에 커밋해서 Vercel(Framework **Other**, Output `.`)이 그대로 서비스한다.
 
-- `index.html` — 메인 (소개 · 일하는 방식 · 케이스 스터디 목록 · 타임라인 · 수상 · 스킬 · 연락처)
-- `projects/*.html` — 프로젝트별 케이스 스터디 (문제 → 판단 → 행동 → 결과 → 배운 점)
-- `works.html` — 작품 갤러리 (카드뉴스·도면·웹툰·포스터, 라이트박스). 작품 데이터는 `site/data.mjs`의 `works`, 이미지는 `assets/img/works/`
-- `assets/` — CSS · JS · 이미지
-- `site/data.mjs` — **모든 텍스트 콘텐츠**. 여기만 고치면 됨
-- `site/build.mjs` — HTML 생성기
+- 라이브: https://my-project-one-sigma-74.vercel.app
+- 소스: `motion/` (구조·수정 방법은 `motion/README.md`)
+- 콘텐츠: `site/data.mjs` — 프로젝트 본문 · 수상 · 스킬 · 작품 전부 여기
+- 모션 씬 문구·수치: `motion/src/data/scenes.ts` · VERIFY 표: `motion/src/data/facts.ts`
+- 이미지: `assets/img/` (작품은 `assets/img/works/`)
 
-## 내용 수정 방법
-1. `site/data.mjs` 수정
-2. `node site/build.mjs` 실행 → `index.html`, `projects/*.html` 재생성
-3. commit & push → Vercel 자동 배포
+## 수정 → 배포
+```bash
+cd motion && npm install && npm run build   # dist 빌드 후 루트 index.html + assets/ 로 복사
+git add -A && git commit -m "..." && git push   # Vercel 자동 배포
+```
 
-## Vercel 배포
-Import Git Repository → Framework Preset: **Other** → Build Command 비움 → Output Directory `.` (루트)
+`vercel.json` 이 모든 경로를 `index.html` 로 넘기는 SPA 설정이고, 예전 주소(`/projects/<slug>`, `/v3/...`)는 새 주소로 리다이렉트된다.

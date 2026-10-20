@@ -41,7 +41,7 @@ export const WorksPage: React.FC = () => {
                 <div><div className="kicker plain" style={{ marginBottom: 8 }}>{w.c}</div><h2>{w.t}</h2></div>
                 <div className="work-meta"><Pill c={w.award === '대상' ? 'amber' : w.color} solid={w.award === '대상'}>{w.award}</Pill><span>{w.date}</span></div>
               </div>
-              <Html as="p" className="work-d" html={w.d.replace(/href="projects\//g, 'href="/v3/project/').replace(/\.html"/g, '"')} />
+              <Html as="p" className="work-d" html={w.d.replace(/href="projects\//g, 'href="/project/').replace(/\.html"/g, '"')} />
               <div style={{ margin: '12px 0 4px' }}>{w.tools.map((t) => <Pill key={t} c={w.color}>{t}</Pill>)}</div>
               <div className={`work-grid ${w.light ? 'light' : ''}`} style={{ '--cols': w.cols || (['9/16', '2/3', '4/5', '3/4', '1/1'].includes(w.ratio) ? 5 : 3), '--ratio': w.ratio } as React.CSSProperties}>
                 {w.imgs.map((im, i) => (

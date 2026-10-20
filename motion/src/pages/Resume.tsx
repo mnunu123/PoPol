@@ -61,7 +61,7 @@ export const ResumePage: React.FC = () => {
       <div className="row"><div className="d">자격</div><div className="s">{certs.join(' · ')}</div></div>
       {education.map((e, i) => <div className="row" key={i}><div className="d">교육 · 활동</div><div className="s">{e}</div></div>)}
 
-      <div className="dim mono" style={{ fontSize: 11, marginTop: 28, letterSpacing: '.1em' }}>PORTFOLIO · my-project-one-sigma-74.vercel.app/v3 · WORKS 18 · 2026.10</div>
+      <div className="dim mono" style={{ fontSize: 11, marginTop: 28, letterSpacing: '.1em' }}>PORTFOLIO · my-project-one-sigma-74.vercel.app · WORKS 18 · 2026.10</div>
     </div>
   );
 };
