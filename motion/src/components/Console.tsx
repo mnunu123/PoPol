@@ -90,7 +90,7 @@ export const Console: React.FC<{ open: boolean; onClose: () => void; onBoot: () 
         certs.forEach((c) => out.push(mk('sys', `  ${c}`)));
         break;
       case 'works':
-        out.push(mk('ok', `${works.length}건 · 대상 ${works.filter((w) => w.award === '대상').length} · 결과 대기 ${works.filter((w) => w.award === '결과 대기').length}`));
+        out.push(mk('ok', `${works.length}건 · 대상 ${works.filter((w) => w.award === '대상').length} · 출품 ${works.filter((w) => w.award === '출품').length}`));
         setTimeout(() => { nav('/works'); onClose(); }, 350);
         break;
       case 'contact':

@@ -142,7 +142,7 @@ const ChapterView: React.FC<{ ch: Chapter; idx: number; total: number; scene: Sc
       )}
       {ch.note && (
         <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 44, fontFamily: FONT, fontSize: 14, color: C.amber, opacity: tween(frame, 40, 12), display: 'flex', gap: 10, alignItems: 'center' }}>
-          <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.25em', border: `1px solid ${C.amber}`, borderRadius: 6, padding: '2px 8px' }}>HONEST</span>{ch.note}
+          <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: '0.25em', border: `1px solid ${C.amber}`, borderRadius: 6, padding: '2px 8px' }}>NOTE</span>{ch.note}
         </div>
       )}
     </AbsoluteFill>

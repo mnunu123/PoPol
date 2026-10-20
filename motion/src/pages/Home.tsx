@@ -84,7 +84,7 @@ const Build: React.FC = () => {
 const Verify: React.FC = () => (
   <section className="section" id="verify">
     <div className="wrap">
-      <SectionHead idx="03" name="VERIFY" title={<>숫자는 <em>출처와 조건</em>을 붙여서 적습니다</>} lead={<>검증셋 기준인지, 더미 데이터인지, 일반화를 확인했는지가 숫자보다 중요합니다. 아래 표의 조건은 각 프로젝트 페이지의 "HONEST" 표시와 같은 기준입니다.</>} />
+      <SectionHead idx="03" name="VERIFY" title={<>숫자는 <em>출처와 조건</em>을 붙여서 적습니다</>} lead={<>어떤 데이터로, 어떤 기준으로 잰 숫자인지가 숫자 자체만큼 중요합니다. 대표 수치 10개의 출처와 측정 조건입니다.</>} />
       <Reveal>
         <div className="vtable">
           <div className="vrow head"><span>VALUE</span><span>WHAT</span><span>SOURCE</span><span>CONDITION</span></div>
@@ -93,7 +93,7 @@ const Verify: React.FC = () => (
               <span className="v" style={{ color: `var(--${f.c})` }}>{f.v}</span>
               <span className="l">{f.l}</span>
               <span className="s">{f.src}</span>
-              <span className={`c ${/미검증|추정|더미/.test(f.cond) ? 'honest' : ''}`}>{f.cond}</span>
+              <span className="c">{f.cond}</span>
             </Link>
           ))}
         </div>

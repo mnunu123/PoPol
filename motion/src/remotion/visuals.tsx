@@ -419,7 +419,7 @@ const Checks: React.FC<{ items: [string, boolean][]; verdict: string; accent: st
         <rect x={400} y={100} width={200} height={100} rx={14} fill={`${C.amber}1a`} stroke={C.amber} strokeWidth={1.4} />
         <text x={500} y={128} textAnchor="middle" {...mono(8.5, C.amber)} letterSpacing={2}>VERDICT</text>
         <text x={500} y={158} textAnchor="middle" {...mono(20, C.amber)} fontWeight={700}>{verdict}</text>
-        <text x={500} y={182} textAnchor="middle" {...sans(10.5, C.muted, 500)}>노출 4 · 클릭 2 → 승자 선언 보류</text>
+        <text x={500} y={182} textAnchor="middle" {...sans(10.5, C.muted, 500)}>조건 미달 → 데이터 더 수집</text>
       </g>
       <text x={40} y={VH - 14} {...mono(9, C.dim)} letterSpacing={1.5}>신뢰할 조건을 전부 통과할 때만 declare_winner</text>
     </g>
