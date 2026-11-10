@@ -115,7 +115,7 @@ const Verify: React.FC = () => (
 );
 
 const WorksTeaser: React.FC = () => {
-  const pick = ['pandaepe', 'drainx', 'moving', 'onesec', 'fishnet', 'video'].map((id) => works.find((w) => w.id === id)!).filter(Boolean);
+  const pick = ['pandaepe', 'co2', 'drainx', 'moving', 'onesec', 'video'].map((id) => works.find((w) => w.id === id)!).filter(Boolean);
   return (
     <section className="section" id="works">
       <div className="wrap">
@@ -161,7 +161,7 @@ const Log: React.FC = () => {
   return (
     <section className="section" id="log">
       <div className="wrap">
-        <SectionHead idx="05" name="LOG" title={<>2024.07 → 2026.10, <em>기록</em>으로 남긴 것</>} lead={<>첫 비전 프로젝트에서 공동창업, 펌웨어 재설계, AI 에이전트, 제조 데이터, CAD 설계까지.</>} />
+        <SectionHead idx="05" name="LOG" title={<>{timeline[0][0]} → {timeline[timeline.length - 1][0]}, <em>기록</em>으로 남긴 것</>} lead={<>첫 비전 프로젝트에서 공동창업, 펌웨어 재설계, AI 에이전트, 제조 데이터, CAD 설계까지.</>} />
         <div className="log">
           <Reveal><Timeline /></Reveal>
           <Reveal delay={0.1}>

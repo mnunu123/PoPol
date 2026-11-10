@@ -1,6 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 import { C, E, FONT, MONO, pop, tween, typed } from './theme';
+import { awards } from '@/data';
 
 export const BOOT_FRAMES = 160;
 
@@ -13,7 +14,7 @@ const LINES: [string, string, string?][] = [
   ['DB       PostgreSQL 15 · spatial index', '4,000,000 rows'],
   ['AGENTS   pipeline 5/5 · JSON handoff', 'ONLINE'],
   ['CAD      ZYXCAD AX · 6 sheets · LISP check', 'OK'],
-  ['AWARDS   loaded', '13'],
+  ['AWARDS   loaded', String(awards.length)],
   ['mount    /portfolio', 'DONE'],
 ];
 const STEP = 9;

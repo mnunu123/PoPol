@@ -12,6 +12,6 @@ export const FACTS: Fact[] = [
   { v: 'P 0.932 · R 0.912', l: '안전보호구 검출 Precision · Recall', src: '결과보고서', cond: '검증셋 · 2,548장 · RTX A6000', c: 'mint', slug: 'helmet' },
   { v: '−32%', l: 'KAMP 검사 작업량 (1,000 → 682)', src: '결과보고서 표 13·14·23', cond: '날짜순 walk-forward · 불량 25/25 포착', c: 'blue', slug: 'kamp' },
   { v: '95.2% / 98.2%', l: '할증레이더 추출 · 자동 승인 정확도', src: '기획서 · 정답셋 45건', cond: 'test 294 레코드 · 선사 7곳', c: 'mint', slug: 'radar' },
-  { v: '13건', l: '공모전 수상 (대상 2 · 최우수 4)', src: '수상경력 · 상장', cond: '2025.09 ~ 2026.10', c: 'amber', slug: 'design' },
+  { v: '14건', l: '공모전 수상 (대상 2 · 최우수 5)', src: '수상경력 · 상장', cond: '2025.09 ~ 2026.11', c: 'amber', slug: 'design' },
   { v: '100%', l: '손동작 분류 정확도', src: 'train.ipynb', cond: '자체 수집 검증셋 기준', c: 'violet', slug: 'moodlight' },
 ];

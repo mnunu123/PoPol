@@ -9,7 +9,7 @@ interface Line { k: Kind; t: React.ReactNode; id: number }
 
 const COMMANDS: Record<string, string> = {
   help: '명령 목록', ls: '프로젝트 목록 (ls projects | ls works)', open: 'open <slug> — 프로젝트 열기', whoami: '한 줄 소개',
-  stat: '대표 수치 + 출처', awards: '수상 13건', skills: '실제로 쓴 스택', certs: '자격증', works: '작품 갤러리', contact: '연락처',
+  stat: '대표 수치 + 출처', awards: `수상 ${awards.length}건`, skills: '실제로 쓴 스택', certs: '자격증', works: '작품 갤러리', contact: '연락처',
   resume: '이력서 페이지', boot: '부팅 시퀀스 다시 보기', uptime: '가동 시간', relay: '릴레이 노이즈 0건 이야기', ping: 'pong', clear: '화면 지우기', exit: '콘솔 닫기',
 };
 
@@ -90,7 +90,7 @@ export const Console: React.FC<{ open: boolean; onClose: () => void; onBoot: () 
         certs.forEach((c) => out.push(mk('sys', `  ${c}`)));
         break;
       case 'works':
-        out.push(mk('ok', `${works.length}건 · 대상 ${works.filter((w) => w.award === '대상').length} · 출품 ${works.filter((w) => w.award === '출품').length}`));
+        out.push(mk('ok', `${works.length}건 · 대상 ${works.filter((w) => w.award === '대상').length} · 최우수 ${works.filter((w) => w.award === '최우수').length} · 출품 ${works.filter((w) => w.award === '출품').length}`));
         setTimeout(() => { nav('/works'); onClose(); }, 350);
         break;
       case 'contact':

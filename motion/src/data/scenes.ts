@@ -218,8 +218,8 @@ export const SCENES: SceneConfig[] = [
         lines: ['기획 의도 · 금지 사항(과장 수치 · 로고 · 악당화)을 지시문으로 고정', '선행 컷을 참조 이미지로 넘겨 화풍 연속성 유지'] },
       { id: 'pipeline', label: 'WORKFLOW', dur: 110, title: '같은 운용 방식을 [[디자인 영역]]으로',
         visual: { type: 'pipeline', nodes: ['기획 의도', '스토리보드 · 대사', '규격 · 금지 사항\n지시문', 'AI 생성\nGPT · 미드저니', '검수 · 재생성\n말풍선 · 오류'] } },
-      { id: 'verify', label: 'VERIFY', dur: 100, title: '판타지아 대구 AI 페스타 카드뉴스 [[대상]]',
-        stats: [{ v: '대상', l: '판타지아 대구 AI 페스타 · 2026.10', c: 'amber' }, { v: '18건', l: 'Works 갤러리 작품', c: 'coral' }, { v: '7편', l: '웹툰 · 인스타툰', c: 'violet' }, { v: '3건', l: '하나카드 plate 상세페이지', c: 'mint' }] },
+      { id: 'verify', label: 'VERIFY', dur: 100, title: '카드뉴스 [[대상]] · 탄소 웹툰 [[최우수]]',
+        stats: [{ v: '대상', l: '판타지아 대구 AI 페스타 · 2026.10', c: 'amber' }, { v: '최우수', l: '「탄소, 다시 보다」 웹툰 · 2026.11', c: 'coral' }, { v: '18건', l: 'Works 갤러리 작품', c: 'violet' }, { v: '7편', l: '웹툰 · 인스타툰', c: 'mint' }] },
     ],
   },
 ];

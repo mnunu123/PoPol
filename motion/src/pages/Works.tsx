@@ -18,6 +18,7 @@ export const WorksPage: React.FC = () => {
   useEffect(() => { document.title = 'Works — 박세준 작품 갤러리'; return () => { document.title = '박세준 — Portfolio 2026 · Build & Verify'; }; }, []);
   const lbItems = lb ? works.find((w) => w.id === lb.id)!.imgs.map((im, i) => ({ src: workImg(im), cap: `${works.find((w) => w.id === lb.id)!.t} · ${i + 1}` })) : [];
   const grand = works.filter((w) => w.award === '대상').length;
+  const best = works.filter((w) => w.award === '최우수').length;
   return (
     <>
       <header className="cs-head">
@@ -26,7 +27,7 @@ export const WorksPage: React.FC = () => {
           <Reveal>
             <div className="kicker" style={{ marginTop: 18 }}>04 / WORKS · {works.length} PIECES</div>
             <h1 className="h2" style={{ fontSize: 'clamp(30px, 4vw, 48px)' }}>만든 것들을 <em>그대로</em> 볼 수 있게</h1>
-            <p className="lead">공모전에 제출한 작품 {works.length}건 · 대상 {grand}건. 콘셉트·대사·레이아웃·규격·금지 사항은 직접 정하고, 이미지 생성은 AI, CAD 도면은 계산값과 대조해 그렸습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
+            <p className="lead">공모전에 제출한 작품 {works.length}건 · 대상 {grand}건 · 최우수 {best}건. 콘셉트·대사·레이아웃·규격·금지 사항은 직접 정하고, 이미지 생성은 AI, CAD 도면은 계산값과 대조해 그렸습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
             <div className="filters">
               {FILTERS.map((x) => <button key={x} className={f === x ? 'on' : ''} onClick={() => setF(x)}>{x}{x !== '전체' && ` ${works.filter((w) => TYPE[w.id] === x).length}`}</button>)}
             </div>
@@ -39,7 +40,7 @@ export const WorksPage: React.FC = () => {
             <Reveal>
               <div className="work-head">
                 <div><div className="kicker plain" style={{ marginBottom: 8 }}>{w.c}</div><h2>{w.t}</h2></div>
-                <div className="work-meta"><Pill c={w.award === '대상' ? 'amber' : w.color} solid={w.award === '대상'}>{w.award}</Pill><span>{w.date}</span></div>
+                <div className="work-meta"><Pill c={w.award === '대상' ? 'amber' : w.award === '최우수' ? 'coral' : w.color} solid={w.award === '대상' || w.award === '최우수'}>{w.award}</Pill><span>{w.date}</span></div>
               </div>
               <Html as="p" className="work-d" html={w.d.replace(/href="projects\//g, 'href="/project/').replace(/\.html"/g, '"')} />
               <div style={{ margin: '12px 0 4px' }}>{w.tools.map((t) => <Pill key={t} c={w.color}>{t}</Pill>)}</div>
