@@ -7,7 +7,7 @@ import { Pill } from '@/components/ui';
 export const ResumePage: React.FC = () => {
   useEffect(() => { document.title = '이력서 — 박세준'; return () => { document.title = '박세준 — Portfolio 2026 · Build & Verify'; }; }, []);
   const s = awardSummary();
-  const featured = ['threebot', 'agents', 'kamp', 'helmet', 'drainx', 'radar', 'inmoov', 'robotarm'].map((x) => projects.find((p) => p.slug === x)!).filter(Boolean);
+  const featured = ['threebot', 'chagok', 'agents', 'kamp', 'helmet', 'drainx', 'radar', 'inmoov', 'robotarm'].map((x) => projects.find((p) => p.slug === x)!).filter(Boolean);
   return (
     <div className="resume">
       <div className="tools">
@@ -27,7 +27,7 @@ export const ResumePage: React.FC = () => {
           <div>{profile.links.blog.replace('https://', '')}</div>
         </div>
       </div>
-      <p className="sum"><b>하드웨어부터 서비스까지 전체 구조를 이해하고 직접 구현하는 엔지니어.</b> 빗물받이 청소 로봇 스타트업(딥테크 예비창업패키지, 우수기업)에서 Co-founder/PM으로 STM32 펌웨어·전장, 비전 파이프라인, FastAPI 백엔드·관제 플랫폼, 사업화 문서를 한 번에 맡았고, 이후 AI 에이전트 파이프라인, 제조 데이터 분석(KAMP), CAD 설계(ZYXCAD)로 넓혔습니다. 숫자는 재현 조건과 출처를 붙여 적습니다.</p>
+      <p className="sum"><b>하드웨어부터 서비스까지 전체 구조를 이해하고 직접 구현하는 엔지니어.</b> 빗물받이 청소 로봇 스타트업(딥테크 예비창업패키지, 우수기업)에서 Co-founder/PM으로 STM32 펌웨어·전장, 비전 파이프라인, FastAPI 백엔드·관제 플랫폼, 사업화 문서를 한 번에 맡았고, 이후 AI 에이전트 파이프라인, 차량용 앱의 음성 AI·노래 생성 서버(현대자동차그룹 앱 공모전), 제조 데이터 분석(KAMP), CAD 설계(ZYXCAD)로 넓혔습니다. 숫자는 재현 조건과 출처를 붙여 적습니다.</p>
 
       <h2>Projects</h2>
       {featured.map((p) => (

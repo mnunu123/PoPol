@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { TRACKS, awardSummary, awards, certs, education, gradeColor, principles, profile, projectBySlug, skills, timeline, workImg, works } from '@/data';
+import { TRACKS, awardSummary, awards, certs, education, gradeColor, principles, profile, projectBySlug, projects, skills, timeline, workImg, works } from '@/data';
 import { FACTS } from '@/data/facts';
 import { SHOWREEL } from '@/data/scenes';
 import { ScenePlayer } from '@/remotion/ScenePlayer';
@@ -29,7 +29,7 @@ const Hero: React.FC<{ onConsole: () => void }> = ({ onConsole }) => {
           <motion.div initial={reduced ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
             <Html as="p" className="hero-sub" html={profile.sub} />
             <div className="hero-cta">
-              <a href="#build" className="btn-solid">프로젝트 14개 보기 ↓</a>
+              <a href="#build" className="btn-solid">프로젝트 {projects.length}개 보기 ↓</a>
               <button className="btn-ghost" onClick={onConsole}><span className="mono">&gt;_</span> 콘솔 열기</button>
               <Link to="/resume" className="btn-ghost">이력서</Link>
             </div>
@@ -60,14 +60,14 @@ const Ticker: React.FC = () => {
   );
 };
 
-const FEATURED = new Set(['threebot', 'drainx', 'agents', 'kamp']);
+const FEATURED = new Set(['threebot', 'drainx', 'chagok', 'agents', 'kamp']);
 
 const Build: React.FC = () => {
   let no = 0;
   return (
     <section className="section" id="build">
       <div className="wrap">
-        <SectionHead idx="02" name="BUILD" title={<>문제를 <em>어떻게</em> 풀었는지, 프로젝트 14개</>} lead={<>정량적 결과만 나열하지 않고, 어떤 문제를 왜 그렇게 판단해서 무엇을 바꿨는지를 씁니다. 각 프로젝트 페이지 상단에는 <b>Remotion으로 코드 작성한 모션 씬</b>이 문제 → 구조 → 검증 순서로 요약합니다.</>} />
+        <SectionHead idx="02" name="BUILD" title={<>문제를 <em>어떻게</em> 풀었는지, 프로젝트 {projects.length}개</>} lead={<>정량적 결과만 나열하지 않고, 어떤 문제를 왜 그렇게 판단해서 무엇을 바꿨는지를 씁니다. 각 프로젝트 페이지 상단에는 <b>Remotion으로 코드 작성한 모션 씬</b>이 문제 → 구조 → 검증 순서로 요약합니다.</>} />
         {TRACKS.map((tr) => (
           <Reveal key={tr.id}>
             <div className="track-head"><span className="no">{tr.no}</span><h3>{tr.ko}</h3><span className="en">{tr.en}</span><span className="rule" /></div>
@@ -84,7 +84,7 @@ const Build: React.FC = () => {
 const Verify: React.FC = () => (
   <section className="section" id="verify">
     <div className="wrap">
-      <SectionHead idx="03" name="VERIFY" title={<>숫자는 <em>출처와 조건</em>을 붙여서 적습니다</>} lead={<>어떤 데이터로, 어떤 기준으로 잰 숫자인지가 숫자 자체만큼 중요합니다. 대표 수치 10개의 출처와 측정 조건입니다.</>} />
+      <SectionHead idx="03" name="VERIFY" title={<>숫자는 <em>출처와 조건</em>을 붙여서 적습니다</>} lead={<>어떤 데이터로, 어떤 기준으로 잰 숫자인지가 숫자 자체만큼 중요합니다. 대표 수치 {FACTS.length}개의 출처와 측정 조건입니다.</>} />
       <Reveal>
         <div className="vtable">
           <div className="vrow head"><span>VALUE</span><span>WHAT</span><span>SOURCE</span><span>CONDITION</span></div>

@@ -12,7 +12,7 @@ motion/
   src/
     data/
       index.ts      site/data.mjs 를 타입 붙여 재수출 + 트랙(4개) 정의 + 썸네일 보정
-      scenes.ts     프로젝트 14개 Remotion 씬 정의 (챕터 · 비주얼 · 수치) + 홈 쇼릴
+      scenes.ts     프로젝트 15개 Remotion 씬 정의 (챕터 · 비주얼 · 수치) + 홈 쇼릴
       facts.ts      VERIFY 표 (수치 · 출처 · 조건)
     remotion/
       theme.ts      색 · 폰트 · tween/pop/scramble 헬퍼

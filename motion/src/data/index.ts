@@ -36,7 +36,7 @@ export const awardSummary = () => {
 export const TRACKS: { id: string; no: string; en: string; ko: string; color: Color; slugs: string[] }[] = [
   { id: 'threebot', no: '01', en: 'Three-Bot', ko: '쓰리봇 · 로봇 · 관제', color: 'coral', slugs: ['threebot', 'drainx'] },
   { id: 'vision', no: '02', en: 'Vision & Robotics', ko: '비전 · 로보틱스', color: 'violet', slugs: ['helmet', 'robotarm', 'inmoov', 'moodlight'] },
-  { id: 'ai', no: '03', en: 'AI & Data', ko: 'AI 자동화 · 데이터', color: 'blue', slugs: ['agents', 'kamp', 'radar', 'software'] },
+  { id: 'ai', no: '03', en: 'AI & Data', ko: 'AI 자동화 · 데이터', color: 'blue', slugs: ['chagok', 'agents', 'kamp', 'radar', 'software'] },
   { id: 'design', no: '04', en: 'Design & Craft', ko: '설계 · 기획 · AI 도구', color: 'amber', slugs: ['pv5', 'docs', 'video', 'design'] },
 ];
 

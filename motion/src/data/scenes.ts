@@ -162,7 +162,28 @@ export const SCENES: SceneConfig[] = [
     ],
   },
   {
-    slug: 'pv5', kicker: '10 · PBV PACKAGE', title: 'PV5 카고 택배 패키지', accent: 'amber',
+    slug: 'chagok', kicker: '10 · VOICE AI', title: '차곡차곡 노래 생성 서버', accent: 'coral',
+    chapters: [
+      { id: 'idea', label: 'IDEA', dur: 100, title: '달리는 속도는 [[비트]]로, 가족이 나눈 말은 [[가사]]로',
+        lines: ['뒷좌석 아이와 보호자 · 30분 넘는 가족 주행', 'PERF_VEHICLE_SPEED → 속도 구간마다 BPM · 비트 수', '맡은 일: 녹음을 받아 노래를 돌려주는 AI · 서버 전체'],
+        visual: { type: 'bars', items: [['정차', 80], ['시속 1~30km', 95], ['시속 31~70km', 110], ['시속 71km 이상', 125]], unit: ' BPM', max: 130, caption: '속도 구간 → BPM · 2 / 4 / 8 / 16비트' } },
+      { id: 'arch', label: 'STRUCTURE', dur: 115, title: '말하는 동안 보여 줄 단어와 [[가사에 쓸 단어]]를 다른 모델로',
+        visual: { type: 'pipeline', nodes: ['녹음 조각\n2초마다 업로드', '화자 구분\nVAD · CAM++', '실시간 단어\nZipformer', '정밀 받아쓰기\nWhisper · Kiwi', '노래 생성\nClaude 가사\nElevenLabs 노래'] } },
+      { id: 'realtime', label: 'LATENCY', dur: 115, title: '말이 끝나야 뜨던 단어를 [[말하는 동안]] 띄웠습니다',
+        lines: ['원인: Whisper가 구간이 닫힌 뒤에만 · CPU에서 한 번 5~7초', '2초 조각을 0.15초에 받아쓰는 스트리밍 모델 추가'],
+        visual: { type: 'bars', items: [['고치기 전', 12], ['고친 뒤', 3]], unit: '초', max: 12, caption: '14초 연속 발화 · 단어가 화면에 뜨기까지 · 네트워크 포함', invert: true } },
+      { id: 'speaker', label: 'SPEAKER', dur: 105, title: '혼자 말했는데 [[다른 가족 카드]]가 켜지던 문제',
+        lines: ['등록할 때와 녹음할 때 마이크가 달라 덜 닮게 나옴', '애매하면 등록 가족으로 · 이번 녹음 목소리를 익힘'],
+        visual: { type: 'bars', items: [['고치기 전', 79], ['고친 뒤', 0]], unit: '%', max: 100, caption: '등록한 아이 혼자 말할 때 다른 가족으로 본 비율 · 18회씩', invert: true } },
+      { id: 'verify', label: 'VERIFY', dur: 120, title: '고칠 때마다 [[같은 녹음]]으로 전후를 쟀습니다',
+        stats: [
+          { v: '12초 → 3초', l: '녹음 중 단어 표시', c: 'coral' }, { v: '79% → 0', l: '등록 가족 오판 · 18회씩', c: 'violet' }, { v: '0.1초 안', l: '가사 강조 · 실제 노래', c: 'blue' },
+          { v: '32초', l: '2분 46초 노래 생성', c: 'mint' }, { v: '0.15초', l: '2초 조각 받아쓰기', c: 'amber' }, { v: '10분', l: '녹음 · 완성곡 서버 삭제', c: 'mint' },
+        ] },
+    ],
+  },
+  {
+    slug: 'pv5', kicker: '11 · PBV PACKAGE', title: 'PV5 카고 택배 패키지', accent: 'amber',
     chapters: [
       { id: 'problem', label: 'IDEA', dur: 95, title: '뒷문을 열면 [[꺼낼 상자가 있는 칸에 불이 켜진다]] — 카메라도 버튼도 없이',
         lines: ['주차 P + 목적지 반경 + 도어 열림 세 신호로 판단', '판단은 앱이, 짐칸 모듈은 불만 켠다'] },
@@ -176,7 +197,7 @@ export const SCENES: SceneConfig[] = [
     ],
   },
   {
-    slug: 'drainx', kicker: '11 · CAD DESIGN', title: 'DRAIN-X 2035 준설 로봇', accent: 'amber',
+    slug: 'drainx', kicker: '12 · CAD DESIGN', title: 'DRAIN-X 2035 준설 로봇', accent: 'amber',
     chapters: [
       { id: 'problem', label: 'REQUIREMENTS', dur: 95, title: '쓰리봇 MVP에서 부딪힌 문제가 그대로 [[설계 요구사항]]이 됐습니다',
         lines: ['사람이 밀어 정렬 → 보도 자율 주행 + 측면 650mm', '±5mm 그리퍼 → EPM 패드', '시간 판단 윈치 → 엔코더 + 로드셀', '건식 흡입 → 클램셸 + 배수'] },
@@ -190,7 +211,7 @@ export const SCENES: SceneConfig[] = [
     ],
   },
   {
-    slug: 'docs', kicker: '12 · DOCUMENTS', title: '숫자가 틀리면 안 되는 문서', accent: 'violet',
+    slug: 'docs', kicker: '13 · DOCUMENTS', title: '숫자가 틀리면 안 되는 문서', accent: 'violet',
     chapters: [
       { id: 'problem', label: 'PRINCIPLE', dur: 90, title: '숫자가 틀리면 안 되는 도메인에서는 [["왜 믿어도 되는지"]]를 먼저 설계',
         lines: ['기술을 만드는 것과 문서로 번역하는 것은 다른 일', '지식재산융합전공 · 특허와 사업화 문서 직접 작성'] },
@@ -201,7 +222,7 @@ export const SCENES: SceneConfig[] = [
     ],
   },
   {
-    slug: 'video', kicker: '13 · AI VIDEO', title: '"모여서 만든 길" 56초', accent: 'amber',
+    slug: 'video', kicker: '14 · AI VIDEO', title: '"모여서 만든 길" 56초', accent: 'amber',
     chapters: [
       { id: 'problem', label: 'START', dur: 85, title: '영상 제작 경험 없이 혼자, 도구 6개를 [[역할 분담]]해 56초를',
         lines: ['"56주년" 한 숫자 → 개미가 작은 걸음을 모아 길을 만든다', '개미 클로즈업 → 56년 전 건설 현장 → 현재의 고속도로'] },
@@ -212,7 +233,7 @@ export const SCENES: SceneConfig[] = [
     ],
   },
   {
-    slug: 'design', kicker: '14 · AI CRAFT', title: '디자인 · 웹툰 공모전', accent: 'coral',
+    slug: 'design', kicker: '15 · AI CRAFT', title: '디자인 · 웹툰 공모전', accent: 'coral',
     chapters: [
       { id: 'problem', label: 'METHOD', dur: 85, title: '콘셉트 · 대사 · 규격은 직접, [[생성은 AI]]',
         lines: ['기획 의도 · 금지 사항(과장 수치 · 로고 · 악당화)을 지시문으로 고정', '선행 컷을 참조 이미지로 넘겨 화풍 연속성 유지'] },
