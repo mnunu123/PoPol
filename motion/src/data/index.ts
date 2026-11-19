@@ -15,6 +15,7 @@ export const works = raw.works as unknown as Work[];
 
 /** 이미지 경로: 기존 사이트의 /assets/img 를 그대로 참조 (같은 도메인 루트) */
 export const img = (p: string) => (p.startsWith('http') ? p : `/assets/img/${p.replace(/^\.\.\//, '')}`);
+export const vid = (p: string) => (p.startsWith('http') ? p : `/assets/video/${p}`);
 export const workImg = (p: string) => (p.startsWith('../') ? `/assets/img/${p.slice(3)}` : `/assets/img/works/${p}`);
 
 export const ACCENT: Record<Color, string> = {

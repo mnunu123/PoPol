@@ -5,6 +5,7 @@ export type ExtraBlock =
   | { type: 'steps'; items: [string, string][] }
   | { type: 'ba'; b: string[]; a: string[] }
   | { type: 'gallery'; items: ([string, string] | [string, string, string])[] }
+  | { type: 'videos'; items: { src: string; poster: string; cap: string; tall?: boolean }[] }
   | { type: 'callout'; b: string; t: string; cls: string }
   | { type: 'kpis'; items: Kpi[] };
 

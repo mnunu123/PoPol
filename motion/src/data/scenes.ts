@@ -165,7 +165,7 @@ export const SCENES: SceneConfig[] = [
     slug: 'chagok', kicker: '10 · VOICE AI', title: '차곡차곡 노래 생성 서버', accent: 'coral',
     chapters: [
       { id: 'idea', label: 'IDEA', dur: 100, title: '달리는 속도는 [[비트]]로, 가족이 나눈 말은 [[가사]]로',
-        lines: ['뒷좌석 아이와 보호자 · 30분 넘는 가족 주행', 'PERF_VEHICLE_SPEED → 속도 구간마다 BPM · 비트 수', '맡은 일: 녹음을 받아 노래를 돌려주는 AI · 서버 전체'],
+        lines: ['뒷좌석 아이와 보호자 · 30분 넘는 가족 주행', 'PERF_VEHICLE_SPEED → 속도 구간마다 BPM · 비트 수', '맡은 일: AI · 백엔드 — 녹음을 받아 노래를 돌려주는 서버'],
         visual: { type: 'bars', items: [['정차', 80], ['시속 1~30km', 95], ['시속 31~70km', 110], ['시속 71km 이상', 125]], unit: ' BPM', max: 130, caption: '속도 구간 → BPM · 2 / 4 / 8 / 16비트' } },
       { id: 'arch', label: 'STRUCTURE', dur: 115, title: '말하는 동안 보여 줄 단어와 [[가사에 쓸 단어]]를 다른 모델로',
         visual: { type: 'pipeline', nodes: ['녹음 조각\n2초마다 업로드', '화자 구분\nVAD · CAM++', '실시간 단어\nZipformer', '정밀 받아쓰기\nWhisper · Kiwi', '노래 생성\nClaude 가사\nElevenLabs 노래'] } },

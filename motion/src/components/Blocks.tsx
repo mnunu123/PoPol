@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LIGHT_THUMBS, img, thumbOf, trackOf } from '@/data';
+import { LIGHT_THUMBS, img, thumbOf, trackOf, vid } from '@/data';
 import type { ExtraBlock, Project } from '@/data/types';
 import { Lightbox } from './Chrome';
 import { Html, Pill, Stat } from './ui';
@@ -34,6 +34,19 @@ export const Extra: React.FC<{ x: ExtraBlock; onZoom?: (src: string, cap: string
           ))}
         </div>
       );
+    case 'videos': {
+      const mixed = x.items.some((v) => v.tall) && x.items.some((v) => !v.tall);
+      return (
+        <div className={`vids${mixed ? ' mixed' : ''}`}>
+          {x.items.map((v, i) => (
+            <figure key={i} className={v.tall ? 'tall' : 'wide'}>
+              <video src={vid(v.src)} poster={img(v.poster)} controls playsInline preload="none" aria-label={v.cap} />
+              <figcaption>{v.cap}</figcaption>
+            </figure>
+          ))}
+        </div>
+      );
+    }
     case 'callout':
       return <div className={`callout ${x.cls}`}><b>{x.b}</b> — {x.t}</div>;
     case 'kpis':
