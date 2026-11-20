@@ -217,8 +217,8 @@ export const SCENES: SceneConfig[] = [
         lines: ['기술을 만드는 것과 문서로 번역하는 것은 다른 일', '지식재산융합전공 · 특허와 사업화 문서 직접 작성'] },
       { id: 'model', label: 'REITS MODEL', dur: 110, title: '청년임대 리츠 — 자본 미스매치 진단에서 [[몬테카를로 5,000회]]까지',
         visual: { type: 'pipeline', nodes: ['진단\n자산 IRR 3.57% < 국채 4.37%', '구조\n인허가 단계 리츠 매입 약정', '모델\n세대당 20년 현금흐름', '시뮬레이션\n5,000회 · 400회', '비교\nA / B / B′ / C'] } },
-      { id: 'verify', label: 'VERIFY', dur: 100, title: '리츠 모델이 낸 결과',
-        stats: [{ v: '−56%', l: '세대당 기금 소요 2.06 → 0.91억', c: 'violet' }, { v: '2.3배', l: '기금 1조 원당 지원 세대', c: 'blue' }, { v: '2건', l: '배터리 특허 초안 L-Fin · V-Pack', c: 'coral' }, { v: '45p', l: '기술 · 기업 · 특허 동향 보고서', c: 'mint' }] },
+      { id: 'verify', label: 'VERIFY', dur: 100, title: '리츠 모델이 낸 결과와 [[대상]]',
+        stats: [{ v: '대상', l: '한국부동산금융투자포럼 공모대회 · 2026.11', c: 'amber' }, { v: '−56%', l: '세대당 기금 소요 2.06 → 0.91억', c: 'violet' }, { v: '2.3배', l: '기금 1조 원당 지원 세대', c: 'blue' }, { v: '2건', l: '배터리 특허 초안 L-Fin · V-Pack', c: 'coral' }, { v: '45p', l: '기술 · 기업 · 특허 동향 보고서', c: 'mint' }] },
     ],
   },
   {
@@ -262,6 +262,6 @@ export const SHOWREEL: SceneConfig = {
       stats: [{ v: '−32%', l: '검사 작업량 · KAMP', c: 'blue' }, { v: '25 / 25', l: '날짜순 검증 포착', c: 'violet' }] },
     { id: 'design', label: '04 · DESIGN & CRAFT', dur: 150, title: '기술을 [[도면과 문서]]로 번역',
       visual: { type: 'blueprint' },
-      stats: [{ v: '6장', l: 'DRAIN-X 도면', c: 'amber' }, { v: '대상 2', l: '카드뉴스 · AI 영상', c: 'coral' }] },
+      stats: [{ v: '6장', l: 'DRAIN-X 도면', c: 'amber' }, { v: '대상 3', l: '카드뉴스 · AI 영상 · 리츠 보고서', c: 'coral' }] },
   ],
 };
