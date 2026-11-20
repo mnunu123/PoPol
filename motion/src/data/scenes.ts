@@ -218,7 +218,7 @@ export const SCENES: SceneConfig[] = [
       { id: 'model', label: 'REITS MODEL', dur: 110, title: '청년임대 리츠 — 자본 미스매치 진단에서 [[몬테카를로 5,000회]]까지',
         visual: { type: 'pipeline', nodes: ['진단\n자산 IRR 3.57% < 국채 4.37%', '구조\n인허가 단계 리츠 매입 약정', '모델\n세대당 20년 현금흐름', '시뮬레이션\n5,000회 · 400회', '비교\nA / B / B′ / C'] } },
       { id: 'verify', label: 'VERIFY', dur: 100, title: '리츠 모델이 낸 결과와 [[대상]]',
-        stats: [{ v: '대상', l: '한국부동산금융투자포럼 공모대회 · 2026.11', c: 'amber' }, { v: '−56%', l: '세대당 기금 소요 2.06 → 0.91억', c: 'violet' }, { v: '2.3배', l: '기금 1조 원당 지원 세대', c: 'blue' }, { v: '2건', l: '배터리 특허 초안 L-Fin · V-Pack', c: 'coral' }, { v: '45p', l: '기술 · 기업 · 특허 동향 보고서', c: 'mint' }] },
+        stats: [{ v: '대상', l: '한국부동산금융투자포럼 공모대회 · 1인', c: 'amber' }, { v: '−56%', l: '세대당 기금 소요 2.06 → 0.91억', c: 'violet' }, { v: '2.3배', l: '기금 1조 원당 지원 세대', c: 'blue' }, { v: '2건', l: '배터리 특허 초안 L-Fin · V-Pack', c: 'coral' }, { v: '45p', l: '기술 · 기업 · 특허 동향 보고서', c: 'mint' }] },
     ],
   },
   {
