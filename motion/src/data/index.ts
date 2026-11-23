@@ -6,6 +6,7 @@ export const profile = raw.profile as unknown as Profile;
 export const principles = raw.principles as unknown as Principle[];
 export const timeline = raw.timeline as unknown as TimelineItem[];
 export const awards = raw.awards as unknown as Award[];
+export const honors = ((raw as Record<string, unknown>).honors ?? []) as unknown as Award[];
 export const gradeColor = raw.gradeColor as unknown as Record<string, Color>;
 export const certs = raw.certs as unknown as string[];
 export const education = raw.education as unknown as string[];

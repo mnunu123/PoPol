@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { awards, awardSummary, certs, education, profile, projects, skills, timeline } from '@/data';
+import { awards, awardSummary, certs, education, honors, profile, projects, skills, timeline } from '@/data';
 import { Pill } from '@/components/ui';
 
 /** 인쇄 가능한 한 장 이력서 — 데이터는 사이트와 같은 소스 */
@@ -49,6 +49,9 @@ export const ResumePage: React.FC = () => {
       <h2>Awards · {s.total}건 ({s.counts.map(([g, n]) => `${g} ${n}`).join(' · ')})</h2>
       {awards.map(([d, g, t], i) => (
         <div className="row" key={i}><div className="d">{d}</div><div><span className="t">{g}</span> <span className="s">{t}</span></div></div>
+      ))}
+      {honors.map(([d, g, t], i) => (
+        <div className="row" key={`h${i}`}><div className="d">{d}</div><div><span className="t">{g}</span> <span className="s">{t}</span></div></div>
       ))}
       <div className="row"><div className="d">2026.02</div><div><span className="t">우수기업</span> <span className="s">딥테크 예비창업패키지 최종 선정 → 청년창업사관학교 서류 면제</span></div></div>
 

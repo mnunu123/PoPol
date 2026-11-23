@@ -218,6 +218,7 @@ main { padding-top: var(--nav-h); }
 .award.top .g { background: var(--amber); color: var(--bg); border-color: var(--amber); }
 .g-coral { color: var(--coral); border-color: rgba(255,122,107,.5); } .g-violet { color: var(--violet); border-color: rgba(139,124,246,.5); } .g-blue { color: var(--blue); border-color: rgba(91,140,255,.5); } .g-mint { color: var(--mint); border-color: rgba(46,230,197,.5); } .g-amber { color: var(--amber); border-color: rgba(255,180,84,.5); }
 .award-sum { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 18px; }
+.honors { margin-top: 10px; }
 @media (max-width: 900px) { .log { grid-template-columns: 1fr; } }
 
 /* ── skills ── */

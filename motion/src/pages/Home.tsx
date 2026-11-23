@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { TRACKS, awardSummary, awards, certs, education, gradeColor, principles, profile, projectBySlug, projects, skills, timeline, workImg, works } from '@/data';
+import { TRACKS, awardSummary, awards, certs, education, gradeColor, honors, principles, profile, projectBySlug, projects, skills, timeline, workImg, works } from '@/data';
 import { FACTS } from '@/data/facts';
 import { SHOWREEL } from '@/data/scenes';
 import { ScenePlayer } from '@/remotion/ScenePlayer';
@@ -176,6 +176,15 @@ const Log: React.FC = () => {
                 </div>
               ))}
             </div>
+            {honors.length > 0 && (
+              <div className="awards honors">
+                {honors.map(([d, g, t], i) => (
+                  <div className="award" key={i}>
+                    <span className="g g-blue">{g}</span><span className="d">{d}</span><span>{t}</span>
+                  </div>
+                ))}
+              </div>
+            )}
             <p className="dim" style={{ fontSize: 12.5, marginTop: 12 }}>+ 딥테크 예비창업패키지 우수기업 선정 → 청년창업사관학교 서류 면제 · 창의회로설계 Cadence Award</p>
           </Reveal>
         </div>
